@@ -21,5 +21,11 @@ app.post("/q" , (req , res)=>{
         qdata : req.query
     })
 })
+
+//params 
+app.get("/news/:id",(req, res )=>{
+    let corrent  = req.params.id;
+    res.send("News Details APi" + corrent)
+})
 const port = 9000;
 app.listen(port , ()=>console.log(`server is runing on ${port}`))
