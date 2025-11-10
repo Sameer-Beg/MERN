@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Users</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 text-white min-h-screen p-10">
+    <div class="nav">
+        <a href="/">back to home </a>
+
+    </div>
+  <h1 class="text-4xl font-semibold mb-8 tracking-tight text-green-400">All Users</h1>
+
+  <div class="users grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <!-- Single User Card -->
+   <% users.forEach(function(e){ %>
+    <div class="user-card bg-gray-800 p-6 rounded-2xl shadow-lg flex flex-col items-center">
+      <img
+        src="<%= e.imgurl %>"
+        alt="User Image"
+        class="w-32 h-32 rounded-full mb-4 object-cover border-4 border-green-400"
+      />
+      <h2 class="text-2xl font-semibold mb-2"><%= e.name %></h2>
+      <p class="text-gray-400 mb-4"><%= e.email %></p>
+      <div class="actions flex space-x-4">
+        <form action="/delete/<%= e._id %>" method="post">
+          <button
+            type="submit"
+            class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-all"
+          >
+            Delete
+          </button>
+        </form>
+        <form action="/update/<%= e._id %>" method="get">
+          <button
+            type="submit"
+            class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+    <% }) %>
+    <!-- End of Single User Card -->
+
+
+  </div>
+</body>
+</html>
